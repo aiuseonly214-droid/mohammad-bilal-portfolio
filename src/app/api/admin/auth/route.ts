@@ -46,3 +46,4 @@ export async function GET() {
   const isAuthenticated = session?.value === 'authenticated_admin_token';
   return NextResponse.json({ isAuthenticated, email: isAuthenticated ? ADMIN_EMAIL : null });
 }
+

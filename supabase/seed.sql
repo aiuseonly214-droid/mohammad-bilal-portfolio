@@ -343,3 +343,4 @@ VALUES
 ('GitHub', 'GitHub Repositories', 'https://github.com/mohammad-bilal', 'github', 2, true),
 ('Email', 'Direct Email', 'mailto:mohammad.bilal.analytics@example.com', 'mail', 3, true),
 ('WhatsApp', 'WhatsApp Contact', 'https://wa.me/919876543210', 'message-square', 4, true);
+

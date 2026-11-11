@@ -84,3 +84,4 @@ export default function CareerGoalsSection({ goals }: CareerGoalsSectionProps) {
     </section>
   );
 }
+

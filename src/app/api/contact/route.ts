@@ -48,3 +48,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Failed to submit contact message. Please try again later.' }, { status: 500 });
   }
 }
+

@@ -117,3 +117,4 @@ export default function ResearchSection({ publications }: ResearchSectionProps) 
     </section>
   );
 }
+

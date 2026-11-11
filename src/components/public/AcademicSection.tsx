@@ -190,3 +190,4 @@ export default function AcademicSection({ education }: AcademicSectionProps) {
     </section>
   );
 }
+

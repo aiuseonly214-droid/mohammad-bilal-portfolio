@@ -97,3 +97,4 @@ export default function ResumeSection({ resumes }: ResumeSectionProps) {
     </section>
   );
 }
+

@@ -88,3 +88,4 @@ export default function EventsSection({ events }: EventsSectionProps) {
     </section>
   );
 }
+

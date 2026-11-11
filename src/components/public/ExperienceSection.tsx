@@ -111,3 +111,4 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
     </section>
   );
 }
+

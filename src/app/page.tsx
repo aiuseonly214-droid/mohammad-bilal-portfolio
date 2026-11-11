@@ -32,10 +32,7 @@ import ProjectsSection from '@/components/public/ProjectsSection';
 import CertificationsSection from '@/components/public/CertificationsSection';
 import AchievementsSection from '@/components/public/AchievementsSection';
 import ExperienceSection from '@/components/public/ExperienceSection';
-import ResearchSection from '@/components/public/ResearchSection';
-import CommunicationSection from '@/components/public/CommunicationSection';
-import EventsSection from '@/components/public/EventsSection';
-import GallerySection from '@/components/public/GallerySection';
+import ActivitiesHubSection from '@/components/public/ActivitiesHubSection';
 import CareerGoalsSection from '@/components/public/CareerGoalsSection';
 import ResumeSection from '@/components/public/ResumeSection';
 import ContactSection from '@/components/public/ContactSection';
@@ -64,19 +61,16 @@ export default async function HomePage() {
   const resumes = await getCollection<ResumeDocument>('resumes', true);
   const socialLinks = await getCollection<SocialLink>('social_links', true);
 
-  const featuredResume = resumes.find(r => r.is_featured) || resumes[0];
-  const resumeDownloadUrl = featuredResume ? featuredResume.file_url : '#resumes';
-
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* 1. Navbar */}
+      {/* 1. Header with 1-Click Instant Resume Download Modal */}
       <Navbar
         socialLinks={socialLinks}
-        resumeUrl={resumeDownloadUrl}
+        resumes={resumes}
       />
 
       <main className="flex-grow">
-        {/* A. Homepage Hero */}
+        {/* A. Hero Landing (Punchy headline, live DB stats, 1-click resume trigger) */}
         <HeroSection
           profile={profile}
           socialLinks={socialLinks}
@@ -86,52 +80,48 @@ export default async function HomePage() {
             totalEducation: stats.totalEducation,
             totalExperiences: stats.totalExperiences
           }}
-          resumeUrl={resumeDownloadUrl}
+          resumes={resumes}
         />
 
-        {/* B. About Me */}
+        {/* B. About Me & Career Interests */}
         <AboutSection profile={profile} />
 
-        {/* C. Academic Profile */}
-        <AcademicSection education={education} />
-
-        {/* D. Technical Skills */}
-        <SkillsSection skills={technicalSkills} />
-
-        {/* E. Soft Skills */}
-        <SoftSkillsSection softSkills={softSkills} />
-
-        {/* F. Projects Portfolio */}
+        {/* C. Projects Portfolio (Prioritized front-and-center for recruiters with impact metrics) */}
         <ProjectsSection projects={projects} />
 
-        {/* G. Certifications */}
+        {/* D. Professional Experience & Internships */}
+        <ExperienceSection experiences={experiences} />
+
+        {/* E. Technical Skills (Industry-standard competency tiers without arbitrary % bars) */}
+        <SkillsSection skills={technicalSkills} />
+
+        {/* F. Certifications & Credentials */}
         <CertificationsSection certifications={certifications} />
+
+        {/* G. Behavioral Soft Skills & Evidence */}
+        <SoftSkillsSection softSkills={softSkills} />
 
         {/* H. Achievements & Awards */}
         <AchievementsSection achievements={achievements} />
 
-        {/* I. Professional Experience & Internships */}
-        <ExperienceSection experiences={experiences} />
+        {/* I. Academic Background (Dual Timeline & Cards view) */}
+        <AcademicSection education={education} />
 
-        {/* J. Research & Publications */}
-        <ResearchSection publications={research} />
+        {/* J. Streamlined Activities Hub (Tabbed Speaking, Events, Research & Gallery) */}
+        <ActivitiesHubSection
+          publications={research}
+          communication={communication}
+          events={events}
+          gallery={gallery}
+        />
 
-        {/* K. Communication & Speaking Journey */}
-        <CommunicationSection milestones={communication} />
-
-        {/* L. Workshops, Events & Activities */}
-        <EventsSection events={events} />
-
-        {/* M. Photo & Video Gallery */}
-        <GallerySection media={gallery} />
-
-        {/* N. Career Goals & Aspirations */}
+        {/* K. Career Goals & Roadmap */}
         <CareerGoalsSection goals={careerGoals} />
 
-        {/* O. Resume & CV Management */}
+        {/* L. Tailored ATS Resumes */}
         <ResumeSection resumes={resumes} />
 
-        {/* Q. Contact Section & Social Links */}
+        {/* M. Contact & Direct Communication Channels */}
         <ContactSection profile={profile} socialLinks={socialLinks} />
       </main>
 
@@ -142,7 +132,7 @@ export default async function HomePage() {
         settings={settings}
       />
 
-      {/* 4. Dedicated AI Recruiter FAQ Assistant */}
+      {/* N. Dedicated AI Recruiter FAQ Assistant */}
       <AiRecruiterChatbot />
     </div>
   );

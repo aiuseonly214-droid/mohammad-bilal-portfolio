@@ -310,3 +310,4 @@ export interface MediaAsset {
   category?: string;
   created_at: string;
 }
+

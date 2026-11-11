@@ -105,3 +105,4 @@ export default function Footer({ profile, socialLinks, settings }: FooterProps) 
     </footer>
   );
 }
+

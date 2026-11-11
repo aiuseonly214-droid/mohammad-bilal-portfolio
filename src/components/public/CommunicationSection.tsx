@@ -81,3 +81,4 @@ export default function CommunicationSection({ milestones }: CommunicationSectio
     </section>
   );
 }
+

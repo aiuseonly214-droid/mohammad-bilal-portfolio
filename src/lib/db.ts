@@ -330,3 +330,4 @@ export async function getDashboardStats() {
     activeResumes: store.resumes.filter(r => r.is_active && r.is_published).length,
   };
 }
+

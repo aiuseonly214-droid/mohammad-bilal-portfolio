@@ -393,3 +393,4 @@ CREATE POLICY "Admin full access media assets" ON public.media_assets FOR ALL TO
 -- CREATE POLICY "Admin write portfolio assets" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'portfolio-assets');
 -- CREATE POLICY "Admin update portfolio assets" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'portfolio-assets');
 -- CREATE POLICY "Admin delete portfolio assets" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'portfolio-assets');
+

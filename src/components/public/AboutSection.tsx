@@ -93,3 +93,4 @@ export default function AboutSection({ profile }: AboutSectionProps) {
     </section>
   );
 }
+
