@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Award, ExternalLink, FileCheck, CheckCircle2, ShieldCheck, X } from 'lucide-react';
+import { Award, ExternalLink, FileCheck, ShieldCheck, X } from 'lucide-react';
 import { Certification } from '@/types/database';
 
 interface CertificationsSectionProps {
@@ -73,7 +73,7 @@ export default function CertificationsSection({ certifications }: Certifications
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                 <button
                   onClick={() => setActiveCert(cert)}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 hover:text-[#142B4A] transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 hover:text-[#142B4A] transition-colors cursor-pointer"
                 >
                   <FileCheck className="w-3.5 h-3.5 text-[#3478C9]" />
                   <span>Preview Details</span>
@@ -166,4 +166,3 @@ export default function CertificationsSection({ certifications }: Certifications
     </section>
   );
 }
-

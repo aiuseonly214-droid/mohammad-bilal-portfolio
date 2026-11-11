@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, FileText, Download, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, FileText, Download, CheckCircle2 } from 'lucide-react';
 import { ResumeDocument } from '@/types/database';
 
 interface ResumeModalProps {
@@ -20,7 +20,7 @@ export default function ResumeModal({ isOpen, onClose, resumes }: ResumeModalPro
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -104,7 +104,7 @@ export default function ResumeModal({ isOpen, onClose, resumes }: ResumeModalPro
           </span>
           <button
             onClick={onClose}
-            className="text-xs font-semibold text-slate-600 hover:text-slate-900"
+            className="text-xs font-semibold text-slate-600 hover:text-slate-900 cursor-pointer"
           >
             Close
           </button>

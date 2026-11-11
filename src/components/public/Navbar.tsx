@@ -9,10 +9,9 @@ import ResumeModal from '@/components/ui/ResumeModal';
 interface NavbarProps {
   socialLinks?: SocialLink[];
   resumes?: ResumeDocument[];
-  onOpenAiFaq?: () => void;
 }
 
-export default function Navbar({ resumes = [], onOpenAiFaq }: NavbarProps) {
+export default function Navbar({ resumes = [] }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
@@ -24,6 +23,12 @@ export default function Navbar({ resumes = [], onOpenAiFaq }: NavbarProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleOpenAi = () => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('open-ai-faq'));
+    }
+  };
 
   // Streamlined 5 Core Recruiter Anchors
   const navLinks = [
@@ -77,21 +82,19 @@ export default function Navbar({ resumes = [], onOpenAiFaq }: NavbarProps) {
 
             {/* Action CTAs */}
             <div className="hidden md:flex items-center gap-3">
-              {onOpenAiFaq && (
-                <button
-                  onClick={onOpenAiFaq}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-50 text-[#3478C9] hover:bg-blue-100 border border-blue-200 transition-colors"
-                  title="Ask AI Recruiter FAQ Assistant"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Ask AI FAQ
-                </button>
-              )}
+              <button
+                onClick={handleOpenAi}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-50 text-[#3478C9] hover:bg-blue-100 border border-blue-200 transition-colors cursor-pointer"
+                title="Ask AI Recruiter FAQ Assistant"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Ask AI FAQ
+              </button>
 
               {/* 1-Click Instant Resume Download Modal */}
               <button
                 onClick={() => setResumeModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-md bg-[#142B4A] text-white hover:bg-[#203F66] transition-all shadow-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-md bg-[#142B4A] text-white hover:bg-[#203F66] transition-all shadow-sm cursor-pointer"
               >
                 <FileDown className="w-4 h-4" />
                 <span>Resume (PDF)</span>
@@ -108,6 +111,13 @@ export default function Navbar({ resumes = [], onOpenAiFaq }: NavbarProps) {
 
             {/* Mobile Menu Button */}
             <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={handleOpenAi}
+                className="p-2 text-[#3478C9] hover:bg-blue-50 rounded-md"
+                title="Ask AI FAQ"
+              >
+                <Sparkles className="w-5 h-5" />
+              </button>
               <button
                 onClick={() => setResumeModalOpen(true)}
                 className="p-2 text-[#142B4A] hover:bg-slate-100 rounded-md"

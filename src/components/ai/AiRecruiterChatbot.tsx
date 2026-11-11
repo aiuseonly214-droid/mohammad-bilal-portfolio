@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Sparkles, MessageSquare, X, Send, Bot, User, ChevronDown, RefreshCw } from 'lucide-react';
+import { Sparkles, X, Send, Bot, RefreshCw } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -45,6 +45,13 @@ export default function AiRecruiterChatbot() {
     }
   }, [messages, isOpen]);
 
+  // Listen for global open event from Navbar or Hero
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-ai-faq', handleOpen);
+    return () => window.removeEventListener('open-ai-faq', handleOpen);
+  }, []);
+
   const handleSend = async (questionText?: string) => {
     const textToSend = questionText || input;
     if (!textToSend.trim() || isLoading) return;
@@ -78,7 +85,7 @@ export default function AiRecruiterChatbot() {
       };
 
       setMessages((prev) => [...prev, aiMsg]);
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
@@ -95,15 +102,15 @@ export default function AiRecruiterChatbot() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      {/* Floating Trigger Button */}
+      {/* Floating Trigger Button with pulsing aura */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#142B4A] hover:bg-[#203F66] text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group border border-blue-400/20"
+          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#142B4A] hover:bg-[#203F66] text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group border border-blue-400/20 cursor-pointer"
           title="Open AI Recruiter FAQ Assistant"
         >
           <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-[#3478C9] group-hover:rotate-12 transition-transform">
-            <Sparkles className="w-4 h-4 text-sky-400" />
+            <Sparkles className="w-4 h-4 text-sky-400 animate-pulse" />
           </div>
           <div className="text-left pr-1">
             <span className="block text-xs font-bold text-white tracking-wide">
@@ -139,7 +146,7 @@ export default function AiRecruiterChatbot() {
 
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -209,7 +216,7 @@ export default function AiRecruiterChatbot() {
                   key={idx}
                   onClick={() => handleSend(q)}
                   disabled={isLoading}
-                  className="px-2.5 py-1 text-[11px] font-medium rounded-full bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-[#3478C9] border border-slate-200/80 shrink-0 transition-colors disabled:opacity-50"
+                  className="px-2.5 py-1 text-[11px] font-medium rounded-full bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-[#3478C9] border border-slate-200/80 shrink-0 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   {q}
                 </button>
@@ -237,7 +244,7 @@ export default function AiRecruiterChatbot() {
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="p-2 rounded-xl bg-[#142B4A] text-white hover:bg-[#203F66] disabled:opacity-40 transition-colors shadow-2xs"
+                className="p-2 rounded-xl bg-[#142B4A] text-white hover:bg-[#203F66] disabled:opacity-40 transition-colors shadow-2xs cursor-pointer"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -249,4 +256,3 @@ export default function AiRecruiterChatbot() {
     </div>
   );
 }
-

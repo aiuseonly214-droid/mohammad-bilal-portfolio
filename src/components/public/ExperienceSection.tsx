@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Briefcase, Calendar, CheckCircle2, Award, Sparkles } from 'lucide-react';
+import { Briefcase, Calendar, CheckCircle2, Sparkles } from 'lucide-react';
 import { Experience } from '@/types/database';
 
 interface ExperienceSectionProps {
@@ -111,4 +111,3 @@ export default function ExperienceSection({ experiences }: ExperienceSectionProp
     </section>
   );
 }
-

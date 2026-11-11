@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Target, Lightbulb, Compass, Award, BookOpen, Rocket } from 'lucide-react';
+import { Target, Award, BookOpen, Rocket } from 'lucide-react';
 import { Profile } from '@/types/database';
 
 interface AboutSectionProps {
@@ -93,4 +93,3 @@ export default function AboutSection({ profile }: AboutSectionProps) {
     </section>
   );
 }
-

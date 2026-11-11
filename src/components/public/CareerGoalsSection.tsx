@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Target, Compass, BookOpen, Rocket, CheckCircle } from 'lucide-react';
+import { Target, Compass, BookOpen, Rocket } from 'lucide-react';
 import { CareerGoal } from '@/types/database';
 
 interface CareerGoalsSectionProps {
@@ -84,4 +84,3 @@ export default function CareerGoalsSection({ goals }: CareerGoalsSectionProps) {
     </section>
   );
 }
-

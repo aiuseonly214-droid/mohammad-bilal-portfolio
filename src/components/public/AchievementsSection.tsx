@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Trophy, Calendar, Sparkles, Building, FileCheck } from 'lucide-react';
+import { Trophy, FileCheck } from 'lucide-react';
 import { Achievement } from '@/types/database';
 
 interface AchievementsSectionProps {
@@ -93,4 +93,3 @@ export default function AchievementsSection({ achievements }: AchievementsSectio
     </section>
   );
 }
-

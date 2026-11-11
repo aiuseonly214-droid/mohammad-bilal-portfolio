@@ -10,7 +10,6 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
-  MapPin,
   Sparkles,
   Eye,
   X
@@ -341,7 +340,7 @@ export default function ActivitiesHubSection({
           <div className="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl">
             <button
               onClick={() => setSelectedGalleryItem(null)}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white text-slate-800 shadow-md transition-colors"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white text-slate-800 shadow-md transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>

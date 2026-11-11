@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUp, Heart, Shield, Lock } from 'lucide-react';
+import { ArrowUp, Lock } from 'lucide-react';
 import { Profile, SocialLink, WebsiteSettings } from '@/types/database';
 
 interface FooterProps {
@@ -49,11 +49,12 @@ export default function Footer({ profile, socialLinks, settings }: FooterProps) 
             </span>
             <ul className="space-y-1.5 text-xs text-slate-300">
               <li><a href="#about" className="hover:text-white transition-colors">About Mohammad Bilal</a></li>
-              <li><a href="#academics" className="hover:text-white transition-colors">Academic Profile</a></li>
-              <li><a href="#skills" className="hover:text-white transition-colors">Technical & Soft Skills</a></li>
               <li><a href="#projects" className="hover:text-white transition-colors">Projects & Case Studies</a></li>
-              <li><a href="#certifications" className="hover:text-white transition-colors">Certifications & Awards</a></li>
-              <li><a href="#resumes" className="hover:text-white transition-colors">Downloadable Resumes</a></li>
+              <li><a href="#experience" className="hover:text-white transition-colors">Professional Experience</a></li>
+              <li><a href="#skills" className="hover:text-white transition-colors">Technical Skills</a></li>
+              <li><a href="#academics" className="hover:text-white transition-colors">Academic Profile</a></li>
+              <li><a href="#activities" className="hover:text-white transition-colors">Activities & Gallery</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">Get in Touch</a></li>
             </ul>
           </div>
 
@@ -95,7 +96,7 @@ export default function Footer({ profile, socialLinks, settings }: FooterProps) 
           
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700"
+            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 cursor-pointer"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />
@@ -105,4 +106,3 @@ export default function Footer({ profile, socialLinks, settings }: FooterProps) 
     </footer>
   );
 }
-

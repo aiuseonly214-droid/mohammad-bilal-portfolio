@@ -7,7 +7,6 @@ import {
   ExternalLink,
   Calendar,
   CheckCircle2,
-  Layers,
   FileText,
   Lightbulb,
   Target,

@@ -18,7 +18,7 @@ export default function AcademicSection({ education }: AcademicSectionProps) {
   return (
     <section id="academics" className="py-20 bg-[#F8FAFC] border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header with View Toggle */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-16">
           <div>
@@ -37,22 +37,20 @@ export default function AcademicSection({ education }: AcademicSectionProps) {
           <div className="inline-flex items-center p-1 rounded-lg bg-slate-200/80 border border-slate-300">
             <button
               onClick={() => setViewMode('timeline')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all ${
-                viewMode === 'timeline'
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all cursor-pointer ${viewMode === 'timeline'
                   ? 'bg-white text-[#142B4A] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
-              }`}
+                }`}
             >
               <GitCommit className="w-3.5 h-3.5" />
               <span>Timeline View</span>
             </button>
             <button
               onClick={() => setViewMode('cards')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all ${
-                viewMode === 'cards'
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-all cursor-pointer ${viewMode === 'cards'
                   ? 'bg-white text-[#142B4A] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
-              }`}
+                }`}
             >
               <LayoutGrid className="w-3.5 h-3.5" />
               <span>Card Grid</span>
@@ -63,7 +61,7 @@ export default function AcademicSection({ education }: AcademicSectionProps) {
         {/* View Mode: Timeline */}
         {viewMode === 'timeline' && (
           <div className="relative border-l-2 border-blue-200 ml-4 sm:ml-8 space-y-12">
-            {education.map((item, idx) => (
+            {education.map((item) => (
               <div key={item.id} className="relative pl-6 sm:pl-10 group">
                 {/* Timeline Dot */}
                 <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-white border-2 border-[#142B4A] flex items-center justify-center text-[#142B4A] group-hover:bg-[#142B4A] group-hover:text-white transition-colors shadow-xs">
@@ -150,7 +148,7 @@ export default function AcademicSection({ education }: AcademicSectionProps) {
                   <p className="text-sm font-semibold text-slate-800 mt-1">
                     {item.institution_name}
                   </p>
-                  
+
                   <div className="mt-2 text-xs text-slate-500 space-y-1">
                     {item.course_stream && <p>Stream: {item.course_stream}</p>}
                     {item.board_university && <p>Affiliation: {item.board_university}</p>}
@@ -190,4 +188,3 @@ export default function AcademicSection({ education }: AcademicSectionProps) {
     </section>
   );
 }
-
