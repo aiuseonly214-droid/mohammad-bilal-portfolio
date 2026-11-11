@@ -78,9 +78,9 @@ cp .env.example .env.local
 
 Configure your credentials:
 ```env
-# Default Admin Login
-ADMIN_EMAIL=admin@bilalportfolio.com
-ADMIN_PASSWORD=bilal2026admin
+# Admin Login Credentials (Set your own in .env.local)
+ADMIN_EMAIL=your-email@example.com
+ADMIN_PASSWORD=your-secret-password
 
 # Supabase (Optional for local test; app runs seamlessly with persistent local fallback)
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
@@ -117,8 +117,8 @@ Visit [http://localhost:3000/admin](http://localhost:3000/admin) to log in to th
 1. Push this repository to GitHub or GitLab.
 2. Import the project into [Vercel](https://vercel.com).
 3. Set the Environment Variables in the Vercel Dashboard:
-   - `ADMIN_EMAIL`
-   - `ADMIN_PASSWORD`
+   - `ADMIN_EMAIL` (your custom secret email)
+   - `ADMIN_PASSWORD` (your custom strong password)
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
@@ -130,7 +130,7 @@ Visit [http://localhost:3000/admin](http://localhost:3000/admin) to log in to th
 ## Testing & Verification Report
 
 - **Public Site**: Verified responsive rendering across all 17 sections.
-- **Admin Authentication**: Verified credential validation (`admin@bilalportfolio.com` / `bilal2026admin`), session cookie issuance, and unauthorized route rejection.
+- **Admin Authentication**: Verified credential validation via secure environment variables, session cookie issuance, and unauthorized route rejection.
 - **CRUD Workflows**: Tested Add, Edit, Delete, and Toggle Publish/Draft across collection items.
 - **AI Recruiter Chatbot**: Grounded strictly in published portfolio data; tested against questions regarding skills, education, projects, certifications, and contact information.
 - **Contact Form**: Tested server-side field validation, spam protection honeypot, and database recording.

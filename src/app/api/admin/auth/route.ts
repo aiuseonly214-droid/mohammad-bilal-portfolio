@@ -1,13 +1,18 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@bilalportfolio.com';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'bilal2026admin';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const AUTH_COOKIE_NAME = 'mb_admin_session';
 
 export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
+
+    if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+      console.error('ADMIN_EMAIL or ADMIN_PASSWORD environment variable is not configured.');
+      return NextResponse.json({ error: 'Server authentication configuration missing' }, { status: 500 });
+    }
 
     if (!email || !password) {
       return NextResponse.json({ error: 'Email and password required' }, { status: 400 });
