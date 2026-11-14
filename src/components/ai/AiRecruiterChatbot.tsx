@@ -101,22 +101,22 @@ export default function AiRecruiterChatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
       {/* Floating Trigger Button with pulsing aura */}
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#142B4A] hover:bg-[#203F66] text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group border border-blue-400/20 cursor-pointer"
+          className="flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-[#142B4A] hover:bg-[#203F66] text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group border border-blue-400/20 cursor-pointer"
           title="Open AI Recruiter FAQ Assistant"
         >
-          <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-[#3478C9] group-hover:rotate-12 transition-transform">
-            <Sparkles className="w-4 h-4 text-sky-400 animate-pulse" />
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-[#3478C9] group-hover:rotate-12 transition-transform">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-sky-400 animate-pulse" />
           </div>
           <div className="text-left pr-1">
-            <span className="block text-xs font-bold text-white tracking-wide">
+            <span className="block text-[11px] sm:text-xs font-bold text-white tracking-wide">
               Ask AI FAQ
             </span>
-            <span className="block text-[10px] text-slate-300">
+            <span className="block text-[9px] sm:text-[10px] text-slate-300">
               Recruiter Assistant
             </span>
           </div>
@@ -125,7 +125,7 @@ export default function AiRecruiterChatbot() {
 
       {/* Floating Chat Modal */}
       {isOpen && (
-        <div className="w-[92vw] sm:w-[420px] h-[580px] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="fixed sm:static bottom-0 right-0 left-0 sm:left-auto w-full sm:w-[400px] md:w-[420px] h-[85vh] sm:h-[540px] max-h-[600px] bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           
           {/* Header */}
           <div className="bg-[#142B4A] text-white p-4 flex items-center justify-between shadow-xs">

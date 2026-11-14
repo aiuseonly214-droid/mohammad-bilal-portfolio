@@ -80,8 +80,8 @@ export default function Navbar({ resumes = [] }: NavbarProps) {
               ))}
             </nav>
 
-            {/* Action CTAs */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Action CTAs (Desktop & Tablet) */}
+            <div className="hidden lg:flex items-center gap-3">
               <button
                 onClick={handleOpenAi}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-50 text-[#3478C9] hover:bg-blue-100 border border-blue-200 transition-colors cursor-pointer"
@@ -109,8 +109,8 @@ export default function Navbar({ resumes = [] }: NavbarProps) {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* Mobile & Tablet Hamburger Button */}
+            <div className="flex lg:hidden items-center gap-2">
               <button
                 onClick={handleOpenAi}
                 className="p-2 text-[#3478C9] hover:bg-blue-50 rounded-md"
@@ -138,7 +138,7 @@ export default function Navbar({ resumes = [] }: NavbarProps) {
 
         {/* Mobile Drawer Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3 shadow-lg">
+          <div className="lg:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3 shadow-lg">
             <div className="grid grid-cols-2 gap-2 pt-2">
               {navLinks.map((link) => (
                 <a

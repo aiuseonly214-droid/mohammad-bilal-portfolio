@@ -131,10 +131,10 @@ export default function HeroSection({
               )}
 
               {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap gap-3 justify-center lg:justify-start">
+              <div className="pt-4 flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3 justify-center lg:justify-start w-full sm:w-auto">
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#142B4A] text-white font-semibold text-sm hover:bg-[#203F66] shadow-md hover:shadow-lg transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#142B4A] text-white font-semibold text-sm hover:bg-[#203F66] shadow-md hover:shadow-lg transition-all"
                 >
                   <span>View Projects</span>
                   <ArrowRight className="w-4 h-4" />
@@ -143,7 +143,7 @@ export default function HeroSection({
                 {/* Direct 1-Click Instant Modal Download */}
                 <button
                   onClick={() => setResumeModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white border border-slate-300 text-slate-800 font-semibold text-sm hover:bg-slate-50 shadow-xs transition-all cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white border border-slate-300 text-slate-800 font-semibold text-sm hover:bg-slate-50 shadow-xs transition-all cursor-pointer"
                 >
                   <FileDown className="w-4 h-4 text-[#3478C9]" />
                   <span>Download Resume (PDF)</span>
@@ -151,7 +151,7 @@ export default function HeroSection({
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-blue-50 text-[#142B4A] font-semibold text-sm hover:bg-blue-100 transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-50 text-[#142B4A] font-semibold text-sm hover:bg-blue-100 transition-colors"
                 >
                   <span>Contact Me</span>
                 </a>

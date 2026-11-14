@@ -58,12 +58,12 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
           </p>
 
           {/* Filter Pills */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+          <div className="mt-8 flex items-center gap-1.5 overflow-x-auto no-scrollbar max-w-full justify-start sm:justify-center pb-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                className={`px-3 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold shrink-0 transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-[#142B4A] text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'

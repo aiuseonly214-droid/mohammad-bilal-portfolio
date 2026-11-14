@@ -68,10 +68,10 @@ export default function ActivitiesHubSection({
           </p>
 
           {/* Tab Switcher Pills */}
-          <div className="mt-8 inline-flex p-1.5 rounded-2xl bg-slate-100 border border-slate-200 flex-wrap justify-center gap-1">
+          <div className="mt-8 flex p-1.5 rounded-2xl bg-slate-100 border border-slate-200 overflow-x-auto no-scrollbar gap-1 max-w-full justify-start sm:justify-center">
             <button
               onClick={() => setActiveTab('speaking')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                 activeTab === 'speaking'
                   ? 'bg-white text-[#142B4A] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -83,7 +83,7 @@ export default function ActivitiesHubSection({
 
             <button
               onClick={() => setActiveTab('events')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                 activeTab === 'events'
                   ? 'bg-white text-[#142B4A] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -95,7 +95,7 @@ export default function ActivitiesHubSection({
 
             <button
               onClick={() => setActiveTab('research')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                 activeTab === 'research'
                   ? 'bg-white text-[#142B4A] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -107,14 +107,14 @@ export default function ActivitiesHubSection({
 
             <button
               onClick={() => setActiveTab('gallery')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                 activeTab === 'gallery'
                   ? 'bg-white text-[#142B4A] shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <ImageIcon className="w-3.5 h-3.5 text-indigo-600" />
-              <span>Photo Gallery ({gallery.length})</span>
+              <ImageIcon className="w-3.5 h-3.5 text-purple-600" />
+              <span>Gallery ({gallery.length})</span>
             </button>
           </div>
         </div>
