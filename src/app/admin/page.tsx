@@ -31,7 +31,9 @@ import {
   ExternalLink,
   Search,
   Check,
-  X
+  X,
+  Upload,
+  FileUp
 } from 'lucide-react';
 
 export default function AdminDashboardPage() {
@@ -54,6 +56,8 @@ export default function AdminDashboardPage() {
   const [editingItem, setEditingItem] = useState<any>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
   const [searchFilter, setSearchFilter] = useState('');
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingResume, setUploadingResume] = useState(false);
 
   // Show toast notification helper
   const showToast = (message: string, type: 'success' | 'error' = 'success') => {
@@ -694,14 +698,60 @@ export default function AdminDashboardPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">
-                    Profile Photograph URL
+                    Profile Photograph
                   </label>
-                  <input
-                    type="text"
-                    value={profileData.profile_photo_url || ''}
-                    onChange={(e) => setProfileData({ ...profileData, profile_photo_url: e.target.value })}
-                    className="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50"
-                  />
+                  <div className="flex gap-2 items-center">
+                    <input
+                      type="text"
+                      value={profileData.profile_photo_url || ''}
+                      onChange={(e) => setProfileData({ ...profileData, profile_photo_url: e.target.value })}
+                      placeholder="Image URL or upload file"
+                      className="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50"
+                    />
+                    <label className="px-3 py-2 bg-blue-50 text-[#142B4A] hover:bg-blue-100 rounded-xl border border-blue-200 text-xs font-bold shrink-0 cursor-pointer flex items-center gap-1.5 transition-colors">
+                      <Upload className="w-3.5 h-3.5 text-[#3478C9]" />
+                      <span>{uploadingImage ? 'Uploading...' : 'Upload'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        disabled={uploadingImage}
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          setUploadingImage(true);
+                          try {
+                            const fd = new FormData();
+                            fd.append('file', file);
+                            fd.append('category', 'profile');
+                            const res = await fetch('/api/upload', { method: 'POST', body: fd });
+                            const data = await res.json();
+                            if (res.ok && data.url) {
+                              setProfileData({ ...profileData, profile_photo_url: data.url });
+                              showToast('Profile photo uploaded successfully!');
+                            } else {
+                              showToast(data.error || 'Upload failed', 'error');
+                            }
+                          } catch {
+                            showToast('Upload failed', 'error');
+                          } finally {
+                            setUploadingImage(false);
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                  {profileData.profile_photo_url && (
+                    <div className="mt-2 flex items-center gap-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={profileData.profile_photo_url}
+                        alt="Profile Preview"
+                        className="w-12 h-12 rounded-xl object-cover border border-slate-200 shadow-xs"
+                      />
+                      <span className="text-[11px] text-slate-500">Current photo preview</span>
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -1097,6 +1147,59 @@ export default function AdminDashboardPage() {
                   className="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50"
                 />
               </div>
+
+              {activeTab === 'resumes' && (
+                <div>
+                  <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                    Upload Resume PDF File *
+                  </label>
+                  <div className="flex gap-2 items-center">
+                    <input
+                      type="text"
+                      name="file_url"
+                      id="resume_file_url_input"
+                      required
+                      defaultValue={editingItem?.file_url || ''}
+                      placeholder="/documents/Your_Resume.pdf"
+                      className="w-full px-3.5 py-2 text-sm rounded-xl border border-slate-300 bg-slate-50"
+                    />
+                    <label className="px-3 py-2 bg-blue-50 text-[#142B4A] hover:bg-blue-100 rounded-xl border border-blue-200 text-xs font-bold shrink-0 cursor-pointer flex items-center gap-1.5 transition-colors">
+                      <FileUp className="w-3.5 h-3.5 text-[#3478C9]" />
+                      <span>{uploadingResume ? 'Uploading...' : 'Upload PDF'}</span>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        className="hidden"
+                        disabled={uploadingResume}
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          setUploadingResume(true);
+                          try {
+                            const fd = new FormData();
+                            fd.append('file', file);
+                            fd.append('category', 'resume');
+                            const res = await fetch('/api/upload', { method: 'POST', body: fd });
+                            const data = await res.json();
+                            if (res.ok && data.url) {
+                              const inputEl = document.getElementById('resume_file_url_input') as HTMLInputElement;
+                              if (inputEl) inputEl.value = data.url;
+                              showToast('Resume PDF uploaded successfully!');
+                            } else {
+                              showToast(data.error || 'Upload failed', 'error');
+                            }
+                          } catch {
+                            showToast('Upload failed', 'error');
+                          } finally {
+                            setUploadingResume(false);
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                  <p className="text-[11px] text-slate-500 mt-1">Upload an ATS-friendly PDF resume (Max 10MB).</p>
+                </div>
+              )}
 
               {activeTab === 'projects' && (
                 <>

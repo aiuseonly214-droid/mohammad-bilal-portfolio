@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { revalidatePath } from 'next/cache';
 import {
   getProfile,
   updateProfile,
@@ -18,6 +19,15 @@ async function checkAdminAuth(): Promise<boolean> {
   const cookieStore = await cookies();
   const session = cookieStore.get(AUTH_COOKIE_NAME);
   return session?.value === 'authenticated_admin_token';
+}
+
+function refreshCache() {
+  try {
+    revalidatePath('/', 'layout');
+    revalidatePath('/');
+  } catch (e) {
+    console.error('Failed to revalidate cache:', e);
+  }
 }
 
 export async function GET(req: Request) {
@@ -75,15 +85,18 @@ export async function POST(req: Request) {
 
     if (resource === 'profile') {
       const updated = await updateProfile(item);
+      refreshCache();
       return NextResponse.json({ data: updated });
     }
 
     if (resource === 'settings') {
       const updated = await updateWebsiteSettings(item);
+      refreshCache();
       return NextResponse.json({ data: updated });
     }
 
     const created = await addItem(resource, item);
+    refreshCache();
     return NextResponse.json({ data: created });
   } catch (error) {
     console.error('Admin POST error:', error);
@@ -107,11 +120,13 @@ export async function PUT(req: Request) {
 
     if (resource === 'profile') {
       const updated = await updateProfile(updates);
+      refreshCache();
       return NextResponse.json({ data: updated });
     }
 
     if (resource === 'settings') {
       const updated = await updateWebsiteSettings(updates);
+      refreshCache();
       return NextResponse.json({ data: updated });
     }
 
@@ -124,6 +139,7 @@ export async function PUT(req: Request) {
       return NextResponse.json({ error: 'Item not found' }, { status: 404 });
     }
 
+    refreshCache();
     return NextResponse.json({ data: updated });
   } catch (error) {
     console.error('Admin PUT error:', error);
@@ -148,6 +164,7 @@ export async function DELETE(req: Request) {
 
     // @ts-expect-error valid resource key
     const success = await deleteItem(resource, id);
+    refreshCache();
     return NextResponse.json({ success });
   } catch (error) {
     console.error('Admin DELETE error:', error);

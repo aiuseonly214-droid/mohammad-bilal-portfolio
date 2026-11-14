@@ -22,28 +22,28 @@ import {
 export const initialProfile: Profile = {
   id: '00000000-0000-0000-0000-000000000001',
   full_name: 'Mohammad Bilal',
-  headline: 'Aspiring Data Analyst | Business Intelligence & SQL Specialist',
-  short_intro: 'Passionate about translating complex raw data into actionable business intelligence through rigorous analytical modeling, SQL optimization, and interactive dashboards.',
-  bio: 'Welcome to my professional portfolio. I am Mohammad Bilal, focused on data analytics, business intelligence, database architecture, and performance-driven problem solving. I combine academic rigor with practical hands-on data modeling to help organizations make reliable, data-informed strategic decisions.',
-  personal_introduction: 'Dedicated technologist and analytics enthusiast with a strong foundation in database querying, data cleaning, and statistical reporting.',
-  career_interests: 'Data Analytics, Business Intelligence, Data Warehousing, SQL Optimization, ETL Pipelines, Machine Learning foundations.',
-  professional_philosophy: 'Data is only as valuable as the decisions it empowers. I believe in clarity, accuracy, and reproducible analytical methodologies.',
-  personal_strengths: 'Analytical mindset, disciplined problem decomposition, fast technical learner, high attention to data integrity.',
-  learning_mindset: 'Committed to daily incremental improvement through structured problem solving and active real-world project development.',
-  future_ambitions: 'To build scalable analytics frameworks and lead data-informed decision making across forward-looking global organizations.',
+  headline: 'Aspiring Data Analyst | Fresher | BCA Graduate',
+  short_intro: 'Motivated BCA graduate and aspiring Data Analyst with strong hands-on skills in SQL, Microsoft Power BI, Advanced Excel, and Python. Seeking entry-level Data Analyst, MIS Executive, or Junior BI roles.',
+  bio: 'Hello, I am Mohammad Bilal, a recent graduate with a passion for numbers, problem-solving, and data storytelling. During my academic journey and personal projects, I developed practical skills in writing SQL queries, building Power BI dashboards, cleaning raw datasets using Excel & Python, and extracting meaningful business insights. I am eager to begin my career as an entry-level Data Analyst, contribute to real-world projects, and continuously learn from experienced team members.',
+  personal_introduction: 'Dedicated BCA graduate with a structured analytical mindset, quick learning ability, and a strong drive to solve practical business problems through data.',
+  career_interests: 'Data Analysis, Business Intelligence, MIS Reporting, SQL Querying, Dashboard Design, and Data Visualization.',
+  professional_philosophy: 'Clear data leads to confident decisions. I focus on accuracy, neat documentation, and continuous daily improvement.',
+  personal_strengths: 'Analytical problem solving, attention to detail, strong self-discipline, and eagerness to learn new tools quickly.',
+  learning_mindset: 'Continuously upskilling through online courses, hands-on practice datasets on Kaggle, and building real-world projects.',
+  future_ambitions: 'To grow into a dependable Data Analyst and contribute to impactful business intelligence solutions for modern teams.',
   profile_photo_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80',
   email: 'mohammad.bilal.analytics@example.com',
   phone: '+91 98765 43210',
   location: 'India',
-  desired_roles: ['Aspiring Data Analyst', 'Business Intelligence Analyst', 'MIS Executive', 'Junior Database Developer'],
+  desired_roles: ['Data Analyst Intern', 'Junior Data Analyst', 'MIS Executive', 'Business Intelligence Trainee'],
   rotating_headlines: [
     'Aspiring Data Analyst',
-    'Business Intelligence Enthusiast',
-    'Technology Learner',
+    'BCA Graduate & Quick Learner',
+    'Power BI & SQL Enthusiast',
     'Problem Solver',
-    'Continuous Learner'
+    'Open to Entry-Level Roles'
   ],
-  primary_technical_skills: ['SQL', 'Python', 'Power BI', 'Advanced Excel', 'Data Analytics', 'Tableau'],
+  primary_technical_skills: ['SQL', 'Power BI', 'Advanced Excel', 'Python', 'Data Cleaning', 'Tableau'],
   updated_at: new Date().toISOString()
 };
 
